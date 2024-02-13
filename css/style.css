@@ -1,0 +1,58 @@
+:root {
+    --pink: #f2a0ed;
+    --white: #ffffff;
+    --black: #000000;
+    --pink-background: #f5a4f1b3;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--pink-background);
+}
+
+.start-container {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid var(--black) !important;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--white);
+}
+
+.start-container p {
+    margin: 5px;
+}
+
+.start-container h3 {
+    margin: 5px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .start-container {
+        width: 80%;
+        padding: 20px;
+    }
+
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--pink);
+    color: #ffffff;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+}
