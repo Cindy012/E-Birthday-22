@@ -10,17 +10,17 @@ body {
     background-color: var(--pink-background);
 }
 
-.start-container {
+.container {
     margin: 0;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 500px;
-    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    transform: translate(-50%, -50%);
     text-align: center;
     border: 2px solid var(--black) !important;
     border-radius: 10px;
@@ -28,18 +28,21 @@ body {
     background-color: var(--white);
 }
 
-.start-container p {
+.container p {
     margin: 5px;
 }
 
-.start-container h3 {
+.container h3 {
     margin: 5px;
 }
 
+.hidden {
+    display: none;
+}
 
 @media screen and (max-width: 600px) {
-    .start-container {
-        width: 80%;
+    #start-container {
+        width: 60%;
         padding: 20px;
     }
 

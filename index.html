@@ -10,16 +10,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <script src="js/jquery-3.7.1.min.js"></script>
+    <script type="module" src="js/script.js"></script>
 </head>
 <body>
-    <section class="start-container">
+    <section class="container" id="start-container">
         <h1>Hi, welcome to this page!</h1>
-        <p>Today is your birthday! But before you get your birthday wishes, you must do a little quiz for fun.
-            <br>&#40;Don&#39;t worry about the quiz, it is not a exam &#59;p&#41;
+        <p>Today is your birthday! Voordat jij je birthday wishes mag bekijken moet je een kleine quiz ondergaan voor fun.
+            <br>&#40;Don't panic about the quiz, it is not a exam &#59;p&#41;
         </p>
         <h3>Are u ready?</h3>
-        <button id="start-quiz" onclick=startQuiz>Start Quiz</button>
+        <button id="start-quiz-btn">Start de Quiz</button>
+    </section>
+    <section class="container hidden" id="quiz-container">
+        <div id="question-container"></div>
+        <button id="check-answer-btn" onclick="checkAnswer()">Check Answer</button>
     </section>
 </body>
-<script src="js/script.js"></script>
 </html>
