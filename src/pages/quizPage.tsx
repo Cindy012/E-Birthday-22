@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Quiz from '../ts/quiz';
 import { Question } from '../ts/question';
 import { quizString } from '../ts/quizString';
 import QuestionComponent from '../components/questionComponent.tsx';
+import QuestionAnimation from '../components/questionAnimation.tsx';
 
 interface QuizPageProps {
     endQuiz: () => void;
@@ -12,6 +13,7 @@ interface QuizPageProps {
 const QuizPage:React.FC<QuizPageProps> = ({endQuiz}) => {
     const [quiz] = useState<Quiz>(initializeQuiz());
     const [currentQuestion, setCurrentQuestion] = useState<Question>(quiz.getCurrentQuestionData());
+    const [playAnimation, setPlayAnimation] = useState<boolean>(false);
 
     function initializeQuiz(): Quiz {
         const quiz = new Quiz();
@@ -44,13 +46,22 @@ const QuizPage:React.FC<QuizPageProps> = ({endQuiz}) => {
         console.log(quiz.isQuizFinished());
         if (quiz.isQuizFinished()) {
             endQuiz();
+            alert('Yey! You have finished the quiz! Let\'s go to the next page!');
             return;
         }
         quiz.nextQuestion();
         setCurrentQuestion(quiz.getCurrentQuestionData());
     }
 
+    useEffect(() => {
+        setPlayAnimation(true);
+        setTimeout(() => {
+            setPlayAnimation(false);
+        }, 3000);
+    }, [currentQuestion]);
+
     return (
+        playAnimation ? <QuestionAnimation questionIndex={currentQuestion.getId()}/> :
         <section className="container" id="quiz-container">
             <QuestionComponent
                 id={currentQuestion.getId()}

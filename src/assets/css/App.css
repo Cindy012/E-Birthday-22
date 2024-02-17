@@ -52,10 +52,15 @@ button {
   border: none;
   border-radius: 5px;
   background-color: var(--pink-2);
-  color: #ffffff;
+  color: var(--white);
   cursor: pointer;
   text-align: center;
   font-size: 14px;
+}
+
+button:hover {
+  background-color: var(--pink-4);
+  scale: 1.1;
 }
 
 #choices {
@@ -70,18 +75,79 @@ button {
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
-  width: 100%;
-  text-align: justify;
+  width: 200px;
+  text-align: center;
   background-color: var(--pink-3);
 }
 
 .choice:hover {
-  background-color: var(--pink-4);
-  color: var(--white);
+  scale: 1;
 }
+
+#quiz-container {
+  animation: showContainer 500ms linear 1;
+}
+
+@keyframes showContainer {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.text-animation-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  overflow: hidden;
+  height: 100vh;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  margin: 0;
+
+  transform: translate(-50%, -50%);
+}
+
+.text-beam {
+  color: #ffffff;
+  font-size: 2em;
+  text-align: center;
+  background-color: #df6da9;
+  width: 80%;
+  position: absolute;
+  white-space: nowrap;
+  animation: moveText 5s linear 1;
+  z-index: -1;
+  font-weight: 600;
+  opacity: 0;
+}
+
+@keyframes moveText {
+  0% {
+    left: 100%;
+    opacity: 1;
+  }
+  50% {
+    left: 25%;
+    opacity: 1;
+  }
+  100% {
+    left: -50%;
+    opacity: 0;
+  }
+}
+
 
 @media screen and (max-width: 600px) {
   .container {
       width: 60%;
+  }
+
+  .text-beam {
+    animation: moveText 3s linear 1;
   }
 }

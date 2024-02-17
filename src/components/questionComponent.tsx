@@ -20,12 +20,10 @@ const QuestionComponent:React.FC<IQuestionComponent> = ({id, question, choices, 
     };
 
   return (
-    <div>
-        <h3 id='question'>{id}: {question}</h3>
-        <div id='choices'>
-            {getChoices()}
-        </div>
-    </div>
+    <>
+        <h3 id='question'>{question}</h3>
+        <div id='choices'>{getChoices()}</div>
+    </>
   );
 }
 
