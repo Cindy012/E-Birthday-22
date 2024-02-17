@@ -3,11 +3,12 @@ import React from 'react';
 interface IChoice {
   id: number;
   value: string;
+  isChoiceCorrect: (choiceId: number) => void;
 }
 
-const Choice:React.FC<IChoice> = ({id, value}) => {
+const Choice:React.FC<IChoice> = ({id, value, isChoiceCorrect}) => {
   return (
-    <button className="choice-btn" onClick={() => console.log(value)}>{id+1}: {value}</button>
+    <button className="choice-btn" onClick={() => isChoiceCorrect(id)}>{id+1}: {value}</button>
   );
 }
 

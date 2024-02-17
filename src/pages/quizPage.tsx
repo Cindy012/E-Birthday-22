@@ -9,7 +9,6 @@ import QuestionComponent from '../components/questionComponent.tsx';
 function QuizPage() {
     const [quiz] = useState<Quiz>(initializeQuiz());
     const [currentQuestion, setCurrentQuestion] = useState<Question>(quiz.getCurrentQuestionData());
-    const [selectedAnswer, setSelectedAnswer] = useState<string>('');
 
     function initializeQuiz(): Quiz {
         const quiz = new Quiz();
@@ -29,9 +28,34 @@ function QuizPage() {
         return quiz;
     }
 
+    const isChoiceCorrect= (choiceId: number) => {
+        let result = currentQuestion.isChoiceCorrect(choiceId);
+        console.log(result);
+        alert(currentQuestion.getAnswerExplanationByAnswerId(choiceId));
+
+        if (result) {
+            setNextQuestion();
+        }
+    };
+
+    function setNextQuestion(): void {
+        if (quiz.isQuizFinished()) {
+            alert('Quiz is finished!');
+
+            return;
+        }
+        quiz.nextQuestion();
+        setCurrentQuestion(quiz.getCurrentQuestionData());
+    }
+
     return (
         <section className="container" id="quiz-container">
-            <QuestionComponent id={currentQuestion.getId()} question={currentQuestion.getQuestion()} choices={currentQuestion.getChoices()} />
+            <QuestionComponent
+                id={currentQuestion.getId()}
+                question={currentQuestion.getQuestion()}
+                choices={currentQuestion.getChoices()}
+                isChoiceCorrect={isChoiceCorrect}
+            />
         </section>
     );
 }

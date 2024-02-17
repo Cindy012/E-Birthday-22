@@ -13,7 +13,7 @@ export class Question {
     this.#correctAnswer = correctAnswer
   }
 
-  isAnswerCorrect(givenAnswer: number): boolean {
+  isChoiceCorrect(givenAnswer: number): boolean {
     return this.#correctAnswer === givenAnswer;
   }
 
