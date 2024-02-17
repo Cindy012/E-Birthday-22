@@ -1,39 +1,39 @@
 export class Question {
   #id: string;
   #question: string;
-  #answers: string[];
+  #choices: string[];
   #correctAnswer: number;
   #answerExplanations: string[];
 
-  constructor(id: string, question: string, answers: string[], correctAnswer: number, answerExplanations: string[]) {
+  constructor(id: string, question: string, choices: string[], correctAnswer: number, answerExplanations: string[]) {
     this.#id = id
     this.#question = question
-    this.#answers = answers
+    this.#choices = choices
     this.#answerExplanations = answerExplanations
     this.#correctAnswer = correctAnswer
   }
 
-  isAnswerCorrect(givenAnswer: number) {
+  isAnswerCorrect(givenAnswer: number): boolean {
     return this.#correctAnswer === givenAnswer;
   }
 
-  getId() {
+  getId(): string {
     return this.#id;
   }
 
-  getQuestion() {
+  getQuestion(): string {
     return this.#question.toString();
   }
 
-  getAnswers() {
-    return this.#answers;
+  getChoices(): string[] {
+    return this.#choices;
   }
 
-  getCorrectAnswer() {
+  getCorrectAnswer(): number {
     return this.#correctAnswer;
   }
 
-  getAnswerExplanationByAnswerId(id: number) {
+  getAnswerExplanationByAnswerId(id: number): string {
     return this.#answerExplanations[id];
   }
 }

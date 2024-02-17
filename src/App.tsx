@@ -1,51 +1,47 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import Quiz from './ts/quiz';
-import { Question } from './ts/question';
-import { quizString } from './ts/quizString';
-
+// Assets
 import './assets/css/App.css';
 
+// Pages
+import StartPage from './pages/startPage.tsx';
+import BirthdayPage from './pages/birthdayPage.tsx';
+import QuizPage from './pages/quizPage.tsx';
+
 function App() {
-  const [quiz] = React.useState<Quiz>(getQuiz());
+  const [appState, setAppState] = useState<number>(0); // 0: begin of the app, 1: quiz, 2: birthday wish page
+  const [currentPage, setCurrentPage] = useState<JSX.Element>(<></>);
 
-  function getQuiz() {
-    const quiz = new Quiz();
-    const quizData = JSON.parse(quizString);
-    for (const questionId in quizData) {
-      const questionData = quizData[questionId];
-      quiz.addQuestion(
-        new Question(
-          questionId,
-          questionData.question,
-          questionData.answers,
-          questionData.correctAnswer,
-          questionData.answerExplanations
-        )
-      );
+  useEffect(() => {
+    function startQuiz(): void {
+      setAppState(1);
     }
-    return quiz;
-  }
 
-  function startQuiz() {
-    console.log('Quiz started');
-    // setCurrentQuestion(quiz.getCurrentQuestion());
-  }
+    function renderPage(): JSX.Element {
+      switch (appState) {
+        case 0:
+          return (
+            <StartPage startQuiz={startQuiz} />
+          );
+        case 1:
+          return (
+            <QuizPage />
+          );
+        case 2:
+          return (
+            <BirthdayPage />
+          );
+        default:
+          return <></>;
+      }
+    }
+
+    setCurrentPage(renderPage());
+  }, [appState]);
 
   return (
     <>
-      <section className="container" id="start-container">
-        <h1>Hi, welcome to this page!</h1>
-        <p>
-          Today is your birthday! Voordat jij je birthday wishes mag bekijken
-          moet je een kleine quiz ondergaan voor fun. <br/>&#40;Don&#39;t panic about
-          the quiz, it is not a exam &#59;p&#41;
-        </p>
-        <h3>Are u ready?</h3>
-        <button id="start-quiz-btn" onClick={startQuiz}>
-          Start de Quiz
-        </button>
-      </section>
+    {currentPage}
     </>
   );
 }

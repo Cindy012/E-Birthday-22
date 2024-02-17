@@ -13,20 +13,20 @@ export default class Quiz {
     this.#questions.push(question);
   }
 
-  getCurrentQuestion() {
+  getCurrentQuestion(): string {
     return this.#questions[this.#currentQuestionIndex].getQuestion();
   }
 
-  getCurrentQuestionData() {
+  getCurrentQuestionData(): Question {
     return this.#questions[this.#currentQuestionIndex];
   }
 
-  isAnswerCorrect(givenAnswer: number) {
+  isAnswerCorrect(givenAnswer: number): boolean {
     return this.getCurrentQuestionData().isAnswerCorrect(givenAnswer);
   }
 
-  getPossibleAnswers() {
-    return this.getCurrentQuestionData().getAnswers();
+  getChoices(): string[] {
+    return this.getCurrentQuestionData().getChoices();
   }
 
   #updateCurrentQuestionIndex() {
@@ -37,7 +37,7 @@ export default class Quiz {
     this.#updateCurrentQuestionIndex();
   }
 
-  isQuizFinished() {
+  isQuizFinished(): boolean {
     return this.#currentQuestionIndex >= this.#questions.length;
   }
 }

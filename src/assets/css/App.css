@@ -59,3 +59,15 @@ button {
   text-align: center;
   font-size: 14px;
 }
+
+.container ul .selected-answer {
+  background: #ffd6ff;
+  border: 1px solid #800080;
+}
+
+#choices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
