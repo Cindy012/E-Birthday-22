@@ -22,7 +22,7 @@ export default class Quiz {
   }
 
   isAnswerCorrect(givenAnswer: number): boolean {
-    return this.getCurrentQuestionData().isAnswerCorrect(givenAnswer);
+    return this.getCurrentQuestionData().isChoiceCorrect(givenAnswer);
   }
 
   getChoices(): string[] {
@@ -38,6 +38,6 @@ export default class Quiz {
   }
 
   isQuizFinished(): boolean {
-    return this.#currentQuestionIndex >= this.#questions.length;
+    return this.#currentQuestionIndex + 1 >= this.#questions.length;
   }
 }

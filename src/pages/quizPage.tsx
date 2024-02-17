@@ -1,12 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Quiz from '../ts/quiz';
 import { Question } from '../ts/question';
 import { quizString } from '../ts/quizString';
 import QuestionComponent from '../components/questionComponent.tsx';
 
+interface QuizPageProps {
+    endQuiz: () => void;
+}
 
-function QuizPage() {
+const QuizPage:React.FC<QuizPageProps> = ({endQuiz}) => {
     const [quiz] = useState<Quiz>(initializeQuiz());
     const [currentQuestion, setCurrentQuestion] = useState<Question>(quiz.getCurrentQuestionData());
 
@@ -30,8 +33,7 @@ function QuizPage() {
 
     const isChoiceCorrect= (choiceId: number) => {
         let result = currentQuestion.isChoiceCorrect(choiceId);
-        console.log(result);
-        alert(currentQuestion.getAnswerExplanationByAnswerId(choiceId));
+        window.alert(currentQuestion.getAnswerExplanationByAnswerId(choiceId));
 
         if (result) {
             setNextQuestion();
@@ -39,9 +41,9 @@ function QuizPage() {
     };
 
     function setNextQuestion(): void {
+        console.log(quiz.isQuizFinished());
         if (quiz.isQuizFinished()) {
-            alert('Quiz is finished!');
-
+            endQuiz();
             return;
         }
         quiz.nextQuestion();

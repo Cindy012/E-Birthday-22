@@ -1,6 +1,9 @@
 # E-Birthday-22
 This project is made to wish a happy birthday to my friend E. I have made a small quiz for E to solve and a birthday wish.
 
+## Sources
+- [Pink color palette](https://www.color-hex.com/color-palette/1016139)
+
 ## Available Scripts
 
 In the project directory, you can run:

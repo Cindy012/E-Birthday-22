@@ -8,7 +8,7 @@ interface IChoice {
 
 const Choice:React.FC<IChoice> = ({id, value, isChoiceCorrect}) => {
   return (
-    <button className="choice-btn" onClick={() => isChoiceCorrect(id)}>{id+1}: {value}</button>
+    <button className="choice" onClick={() => isChoiceCorrect(id)}>{id+1}: {value}</button>
   );
 }
 

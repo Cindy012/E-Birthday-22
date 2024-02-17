@@ -17,6 +17,10 @@ function App() {
       setAppState(1);
     }
 
+    function endQuiz(): void {
+      setAppState(2);
+    }
+
     function renderPage(): JSX.Element {
       switch (appState) {
         case 0:
@@ -25,7 +29,7 @@ function App() {
           );
         case 1:
           return (
-            <QuizPage />
+            <QuizPage endQuiz={endQuiz}/>
           );
         case 2:
           return (
