@@ -308,7 +308,7 @@ button:hover {
 
 @media screen and (max-width: 600px) {
   .container {
-      width: 60%;
+      width: 80%;
   }
 
   .text-beam {
