@@ -49,16 +49,17 @@ const QuizPage:React.FC<QuizPageProps> = ({endQuiz}) => {
             alert('Yey! You have finished the quiz! Let\'s go to the next page!');
             return;
         }
+        playTheAnimation();
         quiz.nextQuestion();
         setCurrentQuestion(quiz.getCurrentQuestionData());
     }
 
-    useEffect(() => {
+    function playTheAnimation() {
         setPlayAnimation(true);
         setTimeout(() => {
             setPlayAnimation(false);
         }, 3000);
-    }, [currentQuestion]);
+    }
 
     return (
         playAnimation ? <QuestionAnimation questionIndex={currentQuestion.getId()}/> :
