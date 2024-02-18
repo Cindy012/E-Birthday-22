@@ -290,7 +290,20 @@ button:hover {
   position: absolute;
   width: 100px;
   height: 100px;
-  bottom: 10px;
+}
+
+#bunny {
+  bottom: 20px;
+}
+
+#tonton1 {
+  left: 50px;
+  top: 30px;
+}
+
+#tonton2 {
+  right: 50px;
+  top: 30px;
 }
 
 @media screen and (max-width: 600px) {

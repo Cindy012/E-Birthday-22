@@ -43,7 +43,6 @@ const QuizPage:React.FC<QuizPageProps> = ({endQuiz}) => {
     };
 
     function setNextQuestion(): void {
-        console.log(quiz.isQuizFinished());
         if (quiz.isQuizFinished()) {
             endQuiz();
             alert('Yey! You have finished the quiz! Let\'s go to the next page!');
