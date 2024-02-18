@@ -8,6 +8,11 @@
   --pink-3: #e791bf;
   --pink-4: #df6da9;
   --pink-5: #d74894;
+
+  --cake-icing: #f53b5a;
+  --cake-color: #ffa3b1;
+  --cake-candle:#fedbab;
+  --cake-candle-light: #ffa500;
 }
 
 body {
@@ -141,6 +146,152 @@ button:hover {
   }
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.card {
+  width: 600px;
+  height: 400px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-perspective: 1200px;
+  perspective: 1200px;
+  transition: 1s;
+}
+
+.card:hover {
+  transform: rotate(-5deg);
+}
+
+.card:hover .outside {
+  transform: rotateY(-130deg);
+}
+
+.outside, .inside {
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  left: 50.1%;
+}
+
+.inside {
+  background: linear-gradient(to right, #e7e7e7, #ffffff 30%);
+  line-height: 3;
+  padding: 0 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  left: 50%;
+}
+
+.outside {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  z-index: 1;
+  transform-origin: left;
+  transition: 2s;
+  cursor: pointer;
+}
+
+.front, .back {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: rotateX(0deg);
+}
+
+.front {
+  background-color: var(--white);
+}
+
+.back {
+  transform: rotateY(180deg);
+  background: linear-gradient(to left, #e7e7e7, #ffffff 30%);
+}
+
+.cake {
+  width: 100%;
+  position: absolute;
+  bottom: 30px;
+}
+
+.top-layer, .bottom-layer {
+  height: 70px;
+  width: 200px;
+  background-repeat: repeat;
+  background-size: 60px 100px;
+  background-position: 28px 0;
+  background-image: linear-gradient(
+    transparent 50px,
+    var(--cake-candle) 50px,
+    var(--cake-candle) 50px,
+    transparent 50px
+  ),
+  radial-gradient(circle at 30px 5px,var(--cake-icing) 30px, var(--cake-color) 31px);
+  border-radius: 10px 10px 0 0;
+  position: relative;
+  margin: auto;
+}
+
+.top-layer {
+  transform: scale(0.8);
+  top: 7px;
+}
+
+.candle {
+  height: 45px;
+  width: 15px;
+  background: #fff3b9;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 126px;
+  margin: auto;
+}
+
+.candle:before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  background-color: var(--cake-candle-light);
+  border-radius: 0 50% 50% 50%;
+  bottom: 48px;
+  transform: rotate(45deg);
+  left: -1px;
+}
+
+.outside p {
+  font-size: 23px;
+  text-transform: uppercase;
+  margin-top: 30px;
+  text-align: center;
+  letter-spacing: 6px;
+}
+
+.inside p {
+  user-select: none;
+  margin: auto;
+  line-height: 1.5;
+}
+
+.inside img {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  bottom: 10px;
+}
 
 @media screen and (max-width: 600px) {
   .container {

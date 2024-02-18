@@ -3,6 +3,7 @@ This project is made to wish a happy birthday to my friend E. I have made a smal
 
 ## Sources
 - [Pink color palette](https://www.color-hex.com/color-palette/1016139)
+- [Birthday card 3d](https://www.youtube.com/watch?v=gGuDNQbRQcg)
 
 ## Available Scripts
 
